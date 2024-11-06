@@ -37,7 +37,7 @@ exports.create = (req, res) => {
 exports.retrieveAllEmpleados = (req, res) => {
     Empleado.findAll({
         order: [
-            ['primer_apellido', 'ASC'], // Ordenar por el primer apellido en orden ascendente
+            ['primer_apellido', 'ASC'], // Ordenar por 'primer_apellido' de manera ascendente
         ]
     })
     .then(empleadoInfos => {
@@ -54,6 +54,7 @@ exports.retrieveAllEmpleados = (req, res) => {
         });
     });
 };
+
 
 exports.getEmpleadoById = (req, res) => {
     let empleadoId = req.params.id;
