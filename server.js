@@ -2,8 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const db = require('./app/config/db.config.js');
-const empleadoRouter = require('./app/routers/router.js');
-const departamentoRouter = require('./app/routers/router.js');
+const juegoRouter = require('./app/routers/router.js');
 
 const app = express();
 
@@ -19,8 +18,8 @@ db.sequelize.sync({ force: false }).then(() => {
   console.log('Resync with { force: false }');
 });
 
-app.use('/', empleadoRouter); 
-app.use('/', departamentoRouter);
+// Definimos la ruta base '/api/juegos' que ya está en el router
+app.use('/api/juegos', juegoRouter);
 
 app.get("/", (req, res) => {
   res.json({ message: "Bienvenidos UMG" });
